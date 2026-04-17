@@ -1,5 +1,6 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: fseda11/TV-Cultura-Mineira
   branch: main
 
 media_folder: "imagens"
