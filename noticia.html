@@ -3,17 +3,21 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Notícias | TV Cultura Mineira</title>
+  <title id="page-title">Notícia | TV Cultura Mineira</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Lora:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root{--red:#E41815;--red-dark:#8B0000;--bg:#0e0808;--bg2:#150b0b;--bg3:#1c0f0f;--border:rgba(228,24,21,.20);--text:#f0ebe8;--muted:#9a8a88;}
     *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
     body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);}
+
+    /* TICKER */
     .ticker{background:var(--red);color:#fff;font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;padding:7px 0;overflow:hidden;}
     .ticker-inner{display:flex;animation:ticker 35s linear infinite;width:max-content;}
     .ticker-inner span{padding:0 48px;}.ticker-sep{opacity:.5;}
     @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    /* HEADER */
     header{background:var(--bg2);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;}
     .header-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 40px;}
     .logo-wrap{display:flex;align-items:center;gap:14px;text-decoration:none;}
@@ -22,101 +26,133 @@
     .logo-text span:last-child{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);}
     nav{display:flex;gap:2px;align-items:center;}
     nav a{color:var(--muted);text-decoration:none;font-size:.78rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:8px 13px;transition:color .2s;}
-    nav a:hover,nav a.active{color:#fff;}
+    nav a:hover{color:#fff;}
     nav a.live{background:var(--red);color:#fff;display:flex;align-items:center;gap:7px;font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:.85rem;padding:9px 16px;margin-left:8px;}
     nav a.live .dot{width:8px;height:8px;border-radius:50%;background:#fff;animation:blink 1.1s infinite;}
     @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
-    .page-hero{background:var(--bg2);border-bottom:1px solid var(--border);padding:52px 40px 48px;position:relative;overflow:hidden;}
-    .page-hero::before{content:"";position:absolute;top:-80px;right:-100px;width:400px;height:400px;background:radial-gradient(ellipse,rgba(228,24,21,.1) 0%,transparent 70%);pointer-events:none;}
-    .page-hero::after{content:"";position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--red),transparent);}
-    .page-hero-inner{max-width:1280px;margin:0 auto;}
-    .page-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.68rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:14px;}
-    .page-eyebrow::before{content:"";width:24px;height:2px;background:var(--red);}
-    .page-hero h1{font-family:"Barlow Condensed",sans-serif;font-weight:900;font-size:clamp(2.4rem,4vw,3.8rem);text-transform:uppercase;color:#fff;line-height:.95;margin-bottom:16px;}
-    .page-hero p{color:var(--muted);font-family:"Lora",serif;font-size:.95rem;line-height:1.7;}
-    .filters{max-width:1280px;margin:0 auto;padding:28px 40px 0;display:flex;gap:8px;flex-wrap:wrap;}
-    .filter-btn{border:1px solid var(--border);background:none;color:var(--muted);font-family:"DM Sans",sans-serif;font-size:.75rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:7px 16px;cursor:pointer;transition:all .2s;}
-    .filter-btn:hover{border-color:var(--red);color:var(--text);}
-    .filter-btn.active{background:var(--red);border-color:var(--red);color:#fff;}
-    .news-page{max-width:1280px;margin:0 auto;padding:40px 40px 80px;}
-    .news-page-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-    .nc{background:var(--bg3);border:1px solid var(--border);overflow:hidden;text-decoration:none;color:var(--text);display:block;transition:border-color .22s,transform .22s;opacity:0;animation:fadeUp .4s forwards;}
-    @keyframes fadeUp{to{opacity:1;transform:none}}
+
+    /* BREADCRUMB */
+    .breadcrumb{max-width:800px;margin:32px auto 0;padding:0 40px;display:flex;align-items:center;gap:8px;font-size:.72rem;color:var(--muted);}
+    .breadcrumb a{color:var(--muted);text-decoration:none;transition:color .2s;}
+    .breadcrumb a:hover{color:var(--red);}
+    .breadcrumb .sep{color:rgba(228,24,21,.4);}
+
+    /* ARTIGO */
+    .article-wrap{max-width:800px;margin:0 auto;padding:32px 40px 80px;}
+
+    .article-tag{display:inline-flex;align-items:center;gap:8px;font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:18px;}
+    .article-tag::before{content:"";width:20px;height:2px;background:var(--red);}
+
+    #article-title{font-family:"Lora",serif;font-weight:600;font-size:clamp(1.7rem,4vw,2.4rem);color:#fff;line-height:1.25;margin-bottom:20px;}
+
+    .article-meta{display:flex;align-items:center;gap:12px;font-size:.75rem;color:var(--muted);margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--border);}
+    .article-meta .meta-dot{width:3px;height:3px;border-radius:50%;background:var(--muted);}
+
+    .article-hero-img{width:100%;border-radius:4px;margin-bottom:36px;display:block;border:1px solid var(--border);}
+    .article-hero-img[src=""]{display:none;}
+
+    #article-body{font-family:"Lora",serif;font-size:1.05rem;line-height:1.85;color:var(--text);}
+    #article-body p{margin-bottom:20px;}
+    #article-body strong{color:#fff;font-weight:600;}
+    #article-body h2,#article-body h3{font-family:"Barlow Condensed",sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:#fff;margin:32px 0 14px;}
+    #article-body h2{font-size:1.6rem;}
+    #article-body h3{font-size:1.3rem;}
+    #article-body a{color:var(--red);text-decoration:none;border-bottom:1px solid rgba(228,24,21,.3);transition:border-color .2s;}
+    #article-body a:hover{border-color:var(--red);}
+    #article-body iframe{max-width:100%;border-radius:4px;}
+
+    /* SHARE */
+    .share-bar{display:flex;align-items:center;gap:12px;margin-top:48px;padding-top:32px;border-top:1px solid var(--border);}
+    .share-label{font-size:.72rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);}
+    .share-btn{display:flex;align-items:center;gap:6px;padding:8px 16px;border:1px solid var(--border);color:var(--muted);text-decoration:none;font-size:.75rem;font-weight:500;transition:border-color .2s,color .2s;cursor:pointer;background:none;}
+    .share-btn:hover{border-color:var(--red);color:var(--red);}
+    .share-btn svg{width:14px;height:14px;fill:currentColor;}
+
+    /* MAIS NOTÍCIAS */
+    .more-section{background:var(--bg2);border-top:1px solid var(--border);padding:60px 40px;}
+    .more-inner{max-width:1280px;margin:0 auto;}
+    .more-title{font-family:"Barlow Condensed",sans-serif;font-weight:800;font-size:1.5rem;text-transform:uppercase;color:#fff;margin-bottom:28px;}
+    .more-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+    .nc{background:var(--bg3);border:1px solid var(--border);overflow:hidden;text-decoration:none;color:var(--text);display:block;transition:border-color .22s,transform .22s;}
     .nc:hover{border-color:rgba(228,24,21,.55);transform:translateY(-3px);}
     .nc-img{overflow:hidden;aspect-ratio:16/9;background:#111;}
     .nc-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;}
     .nc:hover .nc-img img{transform:scale(1.04);}
-    .nc-no-img{display:flex;align-items:center;justify-content:center;font-size:2.5rem;}
-    .nc-body{padding:20px;}
-    .nc-tag{font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:10px;display:block;}
-    .nc h3{font-family:"Lora",serif;font-weight:600;color:#fff;line-height:1.3;font-size:1rem;margin-bottom:10px;}
-    .nc p{font-size:.8rem;color:var(--muted);line-height:1.6;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
-    .nc-meta{display:flex;align-items:center;gap:8px;margin-top:14px;font-size:.7rem;color:var(--muted);}
-    .nc-meta::before{content:"";width:16px;height:16px;border-radius:50%;background:var(--red);opacity:.4;flex-shrink:0;}
-    .state-msg{grid-column:1/-1;text-align:center;padding:80px 20px;color:var(--muted);}
-    .state-msg h3{font-family:"Barlow Condensed",sans-serif;font-size:1.6rem;color:#fff;margin-bottom:10px;}
-    .load-more{display:block;margin:48px auto 0;border:1px solid var(--border);background:none;color:var(--text);font-family:"DM Sans",sans-serif;font-size:.82rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:14px 36px;cursor:pointer;transition:border-color .2s,color .2s;}
-    .load-more:hover{border-color:var(--red);color:var(--red);}
+    .nc-body{padding:16px;}
+    .nc-tag{font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:8px;display:block;}
+    .nc h3{font-family:"Lora",serif;font-weight:600;color:#fff;line-height:1.3;font-size:.9rem;}
+
+    /* LOADING / ERROR */
+    .page-loading{text-align:center;padding:120px 20px;color:var(--muted);}
+    .page-loading h3{font-family:"Barlow Condensed",sans-serif;font-size:1.6rem;color:#fff;margin-bottom:12px;}
+    .page-error{text-align:center;padding:120px 20px;}
+    .page-error h2{font-family:"Barlow Condensed",sans-serif;font-size:2rem;color:#fff;margin-bottom:16px;}
+    .page-error a{color:var(--red);}
+
+    /* FOOTER */
     footer{background:#080404;border-top:1px solid var(--border);padding:40px;text-align:center;}
     footer p{font-size:.75rem;color:var(--muted);}
     .f-socials{display:flex;gap:10px;justify-content:center;margin-top:16px;}
     .f-socials a{width:34px;height:34px;border:1px solid var(--border);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;color:var(--muted);text-decoration:none;transition:border-color .2s,color .2s;}
     .f-socials a:hover{border-color:var(--red);color:var(--red);}
-    @media(max-width:900px){.news-page-grid{grid-template-columns:repeat(2,1fr);}}
-    @media(max-width:560px){.news-page-grid{grid-template-columns:1fr;}}
-    @media(max-width:768px){.header-inner,.page-hero,.filters,.news-page,footer{padding-left:20px;padding-right:20px;}nav a:not(.live){display:none;}}
+
+    @media(max-width:768px){
+      .header-inner,.article-wrap,.breadcrumb,.more-section{padding-left:20px;padding-right:20px;}
+      .more-grid{grid-template-columns:1fr;}
+      nav a:not(.live){display:none;}
+    }
   </style>
 </head>
 <body>
+
+<!-- TICKER -->
 <div class="ticker">
   <div class="ticker-inner">
-    <span>&#128250; TV Cultura Mineira</span><span class="ticker-sep">&#9670;</span>
-    <span>Missa ao vivo todos os dias &agrave;s 19h &mdash; Santu&aacute;rio de Santa Rita do Sapuca&iacute;</span><span class="ticker-sep">&#9670;</span>
-    <span>Baixe o app: dispon&iacute;vel na App Store e Google Play</span><span class="ticker-sep">&#9670;</span>
-    <span>&#128250; TV Cultura Mineira</span><span class="ticker-sep">&#9670;</span>
-    <span>Missa ao vivo todos os dias &agrave;s 19h</span><span class="ticker-sep">&#9670;</span>
+    <span>&#128250; TV Cultura Mineira</span>
+    <span class="ticker-sep">&#9670;</span>
+    <span>Missa ao vivo todos os dias &agrave;s 19h &mdash; Santu&aacute;rio de Santa Rita do Sapuca&iacute;</span>
+    <span class="ticker-sep">&#9670;</span>
+    <span>Baixe o app: dispon&iacute;vel na App Store e Google Play</span>
+    <span class="ticker-sep">&#9670;</span>
+    <span>&#128250; TV Cultura Mineira</span>
+    <span class="ticker-sep">&#9670;</span>
+    <span>Missa ao vivo todos os dias &agrave;s 19h</span>
+    <span class="ticker-sep">&#9670;</span>
     <span>Baixe o app</span>
   </div>
 </div>
+
+<!-- HEADER -->
 <header>
   <div class="header-inner">
     <a href="index.html" class="logo-wrap">
       <img class="logo-img" src="data:image/avif;base64,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" alt="TV Cultura Mineira">
-      <div class="logo-text"><span>TV Cultura Mineira</span><span>Orgulho do Sul de Minas</span></div>
+      <div class="logo-text">
+        <span>TV Cultura Mineira</span>
+        <span>Orgulho do Sul de Minas</span>
+      </div>
     </a>
     <nav>
-      <a href="noticias.html" class="active">Not&iacute;cias</a>
+      <a href="noticias.html">Not&iacute;cias</a>
       <a href="index.html#programacao">Programa&ccedil;&atilde;o</a>
       <a href="https://www.tvculturamineira.com.br/quem-somos" target="_blank">Quem Somos</a>
       <a href="index.html#contato">Contato</a>
-      <a href="SEU_LINK_AO_VIVO_AQUI" target="_blank" class="live"><span class="dot"></span>Ao Vivo</a>
+      <a href="SEU_LINK_AO_VIVO_AQUI" target="_blank" class="live">
+        <span class="dot"></span>Ao Vivo
+      </a>
     </nav>
   </div>
 </header>
-<section class="page-hero">
-  <div class="page-hero-inner">
-    <p class="page-eyebrow">Informa&ccedil;&atilde;o em primeira m&atilde;o</p>
-    <h1>Todas as<br>Not&iacute;cias</h1>
-    <p>Cobertura completa do Sul de Minas Gerais &mdash; pol&iacute;tica, cultura, seguran&ccedil;a e muito mais.</p>
+
+<!-- CONTEÚDO (carregado via JS) -->
+<div id="page-content">
+  <div class="page-loading">
+    <h3>Carregando not&iacute;cia...</h3>
+    <p>Aguarde um instante.</p>
   </div>
-</section>
-<div class="filters" id="filters">
-  <button class="filter-btn active" data-cat="Todas" onclick="filterNews(this)">Todas</button>
-  <button class="filter-btn" data-cat="Sul de Minas" onclick="filterNews(this)">Sul de Minas</button>
-  <button class="filter-btn" data-cat="Santa Rita do Sapucai" onclick="filterNews(this)">Santa Rita</button>
-  <button class="filter-btn" data-cat="Pouso Alegre" onclick="filterNews(this)">Pouso Alegre</button>
-  <button class="filter-btn" data-cat="Politica" onclick="filterNews(this)">Pol&iacute;tica</button>
-  <button class="filter-btn" data-cat="Cultura" onclick="filterNews(this)">Cultura</button>
-  <button class="filter-btn" data-cat="Saude" onclick="filterNews(this)">Sa&uacute;de</button>
-  <button class="filter-btn" data-cat="Seguranca" onclick="filterNews(this)">Seguran&ccedil;a</button>
-  <button class="filter-btn" data-cat="Esportes" onclick="filterNews(this)">Esportes</button>
 </div>
-<main class="news-page">
-  <div class="news-page-grid" id="news-grid">
-    <div class="state-msg"><h3>Carregando not&iacute;cias...</h3></div>
-  </div>
-  <button class="load-more" id="load-more" onclick="loadMore()" style="display:none">Carregar mais not&iacute;cias</button>
-</main>
+
+<!-- FOOTER -->
 <footer>
   <p>&copy;2025 TV Cultura Mineira. Todos os direitos reservados.</p>
   <div class="f-socials">
@@ -126,55 +162,131 @@
     <a href="https://www.youtube.com/@tvculturamineira0001" target="_blank">YT</a>
   </div>
 </footer>
+
 <script>
-let allNews=[], filtered=[], page=0;
-const PER_PAGE=9;
+function fmtDate(s) {
+  if (!s) return "";
+  try { return new Date(s).toLocaleDateString("pt-BR",{day:"2-digit",month:"long",year:"numeric"}); }
+  catch(e) { return s; }
+}
 
-function fmtDate(s){if(!s)return"";try{return new Date(s).toLocaleDateString("pt-BR",{day:"2-digit",month:"short",year:"numeric"});}catch(e){return s;}}
+function shareWhatsApp(title) {
+  const url = encodeURIComponent(window.location.href);
+  const text = encodeURIComponent(title + " — TV Cultura Mineira");
+  window.open("https://wa.me/?text=" + text + "%20" + url, "_blank");
+}
 
-function buildCard(n, delay){
-  const img = n.imagem
-    ? `<div class="nc-img"><img src="${n.imagem}" alt="${n.titulo}" loading="lazy"></div>`
-    : `<div class="nc-img nc-no-img">&#128250;</div>`;
-  return `<a href="noticia.html?slug=${n.slug}" class="nc" style="animation-delay:${delay}s">
-    ${img}
-    <div class="nc-body">
-      <span class="nc-tag">${n.categoria||"Notícias"}</span>
-      <h3>${n.titulo}</h3>
-      <p>${n.resumo||""}</p>
-      <div class="nc-meta">TV Cultura Mineira &middot; ${fmtDate(n.data)}</div>
+function copyLink() {
+  navigator.clipboard.writeText(window.location.href).then(() => {
+    const btn = document.getElementById("copy-btn");
+    btn.textContent = "✓ Copiado!";
+    setTimeout(() => btn.textContent = "Copiar link", 2000);
+  });
+}
+
+function renderRelated(all, currentSlug) {
+  const related = all.filter(n => n.slug !== currentSlug).slice(0, 3);
+  if (!related.length) return "";
+  const cards = related.map(n => {
+    const img = n.imagem
+      ? `<div class="nc-img"><img src="${n.imagem}" alt="${n.titulo}" loading="lazy"></div>`
+      : `<div class="nc-img" style="display:flex;align-items:center;justify-content:center;background:#1c0f0f;font-size:2rem;">&#128250;</div>`;
+    return `<a href="noticia.html?slug=${n.slug}" class="nc">
+      ${img}
+      <div class="nc-body">
+        <span class="nc-tag">${n.categoria || ""}</span>
+        <h3>${n.titulo}</h3>
+      </div>
+    </a>`;
+  }).join("");
+  return `<section class="more-section">
+    <div class="more-inner">
+      <div class="more-title">Mais Not&iacute;cias</div>
+      <div class="more-grid">${cards}</div>
     </div>
-  </a>`;
+  </section>`;
 }
 
-function renderPage(){
-  const grid=document.getElementById("news-grid");
-  const slice=filtered.slice(0,(page+1)*PER_PAGE);
-  if(!slice.length){grid.innerHTML=`<div class="state-msg"><h3>Nenhuma not&iacute;cia nesta categoria</h3></div>`;document.getElementById("load-more").style.display="none";return;}
-  grid.innerHTML=slice.map((n,i)=>buildCard(n,(i%PER_PAGE)*0.06)).join("");
-  document.getElementById("load-more").style.display=(page+1)*PER_PAGE<filtered.length?"block":"none";
+async function loadArticle() {
+  const params = new URLSearchParams(window.location.search);
+  const slug = params.get("slug");
+
+  if (!slug) {
+    document.getElementById("page-content").innerHTML = `
+      <div class="page-error">
+        <h2>Not&iacute;cia n&atilde;o encontrada</h2>
+        <p><a href="noticias.html">Voltar para as not&iacute;cias</a></p>
+      </div>`;
+    return;
+  }
+
+  try {
+    const res = await fetch("/noticias.json");
+    if (!res.ok) throw new Error();
+    const all = await res.json();
+    const noticia = all.find(n => n.slug === slug);
+
+    if (!noticia) {
+      document.getElementById("page-content").innerHTML = `
+        <div class="page-error">
+          <h2>Not&iacute;cia n&atilde;o encontrada</h2>
+          <p><a href="noticias.html">Ver todas as not&iacute;cias</a></p>
+        </div>`;
+      return;
+    }
+
+    // Atualiza title da aba
+    document.title = noticia.titulo + " | TV Cultura Mineira";
+
+    const heroImg = noticia.imagem
+      ? `<img class="article-hero-img" src="${noticia.imagem}" alt="${noticia.titulo}">`
+      : "";
+
+    document.getElementById("page-content").innerHTML = `
+      <div class="breadcrumb">
+        <a href="index.html">In&iacute;cio</a>
+        <span class="sep">›</span>
+        <a href="noticias.html">Not&iacute;cias</a>
+        <span class="sep">›</span>
+        <span style="color:var(--text)">${noticia.categoria || "Not&iacute;cias"}</span>
+      </div>
+
+      <article class="article-wrap">
+        <div class="article-tag">${noticia.categoria || "Not&iacute;cias"}</div>
+        <h1 id="article-title">${noticia.titulo}</h1>
+        <div class="article-meta">
+          <span>TV Cultura Mineira</span>
+          <span class="meta-dot"></span>
+          <span>${fmtDate(noticia.data)}</span>
+        </div>
+        ${heroImg}
+        <div id="article-body">${noticia.corpo || "<p>" + (noticia.resumo || "") + "</p>"}</div>
+        <div class="share-bar">
+          <span class="share-label">Compartilhar</span>
+          <button class="share-btn" onclick="shareWhatsApp('${noticia.titulo.replace(/'/g,"\'")}')">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp
+          </button>
+          <button class="share-btn" id="copy-btn" onclick="copyLink()">
+            <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            Copiar link
+          </button>
+        </div>
+      </article>
+
+      ${renderRelated(all, slug)}
+    `;
+
+  } catch(e) {
+    document.getElementById("page-content").innerHTML = `
+      <div class="page-error">
+        <h2>Erro ao carregar</h2>
+        <p><a href="noticias.html">Voltar para as not&iacute;cias</a></p>
+      </div>`;
+  }
 }
 
-function filterNews(btn){
-  document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
-  btn.classList.add("active");
-  filtered=btn.dataset.cat==="Todas"?allNews:allNews.filter(n=>n.categoria===btn.dataset.cat);
-  page=0; renderPage();
-}
-
-function loadMore(){page++;renderPage();window.scrollBy({top:400,behavior:"smooth"});}
-
-async function init(){
-  try{
-    const res=await fetch("/noticias.json");
-    if(!res.ok) throw new Error();
-    allNews=await res.json();
-    filtered=allNews;
-    if(!allNews.length){document.getElementById("news-grid").innerHTML=`<div class="state-msg"><h3>Nenhuma not&iacute;cia ainda</h3></div>`;return;}
-    renderPage();
-  }catch(e){document.getElementById("news-grid").innerHTML=`<div class="state-msg"><h3>Not&iacute;cias em breve</h3></div>`;}
-}
-init();
+loadArticle();
 </script>
 </body>
 </html>
