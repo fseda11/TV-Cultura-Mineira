@@ -1,0 +1,25 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "imagens"
+public_folder: "/imagens"
+
+locale: 'pt'
+
+collections:
+  - name: "noticias"
+    label: "Noticias"
+    label_singular: "Noticia"
+    folder: "content/noticias"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}} - {{date}}"
+    fields:
+      - {label: "Titulo", name: "title", widget: "string"}
+      - {label: "Resumo", name: "resumo", widget: "text"}
+      - {label: "Categoria", name: "categoria", widget: "select", options: ["Sul de Minas", "Santa Rita do Sapucai", "Pouso Alegre", "Politica", "Cultura", "Saude", "Seguranca", "Esportes"]}
+      - {label: "Data", name: "date", widget: "datetime"}
+      - {label: "Imagem de capa", name: "imagem", widget: "image", required: false}
+      - {label: "Link externo", name: "link", widget: "string", required: false}
+      - {label: "Texto completo", name: "body", widget: "markdown"}

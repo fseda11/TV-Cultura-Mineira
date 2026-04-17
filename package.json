@@ -1,0 +1,8 @@
+{
+  "name": "tv-cultura-mineira",
+  "version": "1.0.0",
+  "description": "Site TV Cultura Mineira",
+  "scripts": {
+    "build": "node build.js"
+  }
+}
